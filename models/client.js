@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   const Client = sequelize.define("Client", {
     name: {
       type: DataTypes.STRING,
@@ -47,15 +47,15 @@ module.exports = function (sequelize, DataTypes) {
       defaultValue: Sequelize.now()
     }
   });
-  Client.associate = function (models) {
+  Client.associate = function(models) {
     Client.belongsTo(models.SalesPerson, {
       foreignKey: {
         allowNull: false
       }
     });
     Client.hasMany(models.Notes, {
-      onDelete: 'cascade'
+      onDelete: "cascade"
     });
-  }
+  };
   return Client;
 };
