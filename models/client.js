@@ -47,6 +47,15 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: Sequelize.now()
     }
   });
-
+  Client.associate = function(models){
+    Client.belongsTo(models.SalesPerson, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    Client.hasMany(models.Notes,{
+      onDelete: 'cascade'
+    });
+  }
   return Client;
-};
+}
