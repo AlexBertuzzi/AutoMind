@@ -7,4 +7,4 @@ module.exports = function(sequelize, DataTypes){
         SalesPerson.hasMany(models.Client);
     };
     return SalesPerson;
-};
+}
