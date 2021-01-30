@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS autoMind_bd;
+
+CREATE DATABASE autoMind_bd;
