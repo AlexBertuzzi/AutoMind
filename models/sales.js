@@ -27,10 +27,6 @@ module.exports = function(sequelize, DataTypes) {
       bcrypt.genSaltSync(10),
       null
     );
-
-    name: DataTypes.STRING,
-    allowNull: false
-
   });
   SalesPerson.associate = function(models) {
     SalesPerson.hasMany(models.Client);
