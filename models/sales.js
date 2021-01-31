@@ -1,5 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   const SalesPerson = sequelize.define("SalesPerson", {
+
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -26,6 +27,10 @@ module.exports = function(sequelize, DataTypes) {
       bcrypt.genSaltSync(10),
       null
     );
+
+    name: DataTypes.STRING,
+    allowNull: false
+
   });
   SalesPerson.associate = function(models) {
     SalesPerson.hasMany(models.Client);
