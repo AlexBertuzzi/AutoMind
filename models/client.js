@@ -16,31 +16,19 @@ module.exports = function(sequelize, DataTypes) {
     },
     make: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [30]
-      }
+      allowNull: true
     },
     model: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [30]
-      }
+      allowNull: true
     },
     color: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [20]
-      }
+      allowNull: true
     },
     quote: {
       type: DataTypes.INTEGER,
-      allowNull: true,
-      validate: {
-        len: [12]
-      }
+      allowNull: true
     },
     timeStamp: {
       type: DataTypes.DATEONLY,
