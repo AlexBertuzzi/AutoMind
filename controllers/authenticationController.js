@@ -7,9 +7,9 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 const db = require("../models");
 
 router.get("/", (req, res) => {
-  db.all(data => {
+  db.SalesPerson.findAll().then(salesPerson => {
     const hbsObject = {
-      salesPerson: data
+      salesPerson: salesPerson
     };
     console.log(hbsObject);
     res.render("signup", hbsObject);
@@ -17,9 +17,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  db.all(data => {
+  db.SalesPerson.findAll().then(salesPerson => {
     const hbsObject = {
-      salesPerson: data
+      salesPerson: salesPerson
     };
     console.log(hbsObject);
     res.render("login", hbsObject);
@@ -27,9 +27,9 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/members", isAuthenticated, (req, res) => {
-  db.all(data => {
+  db.SalesPerson.findAll().then(salesPerson => {
     const hbsObject = {
-      clients: data
+      clients: salesPerson
     };
     console.log(hbsObject);
     res.render("members", hbsObject);
