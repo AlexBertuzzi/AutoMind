@@ -32,7 +32,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     timeStamp: {
       type: DataTypes.DATEONLY,
-      defaultValue: Sequelize.now()
+      allowNull: true
     }
   });
   Client.associate = function(models) {
