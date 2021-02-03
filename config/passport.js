@@ -39,11 +39,11 @@ passport.use(
 // In order to help keep authentication state across HTTP requests,
 // Sequelize needs to serialize and deserialize the user
 // Just consider this part boilerplate needed to make it all work
-passport.serializeSalesPerson((salesPerson, cb) => {
+passport.serializeUser((salesPerson, cb) => {
   cb(null, salesPerson);
 });
 
-passport.deserializeSalesPerson((obj, cb) => {
+passport.deserializeUser((obj, cb) => {
   cb(null, obj);
 });
 

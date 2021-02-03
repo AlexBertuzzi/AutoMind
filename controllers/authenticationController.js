@@ -4,7 +4,7 @@ const router = express.Router();
 
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-const db = require("../models/");
+const db = require("../models");
 
 router.get("/", (req, res) => {
   db.all(data => {
@@ -35,3 +35,5 @@ router.get("/members", isAuthenticated, (req, res) => {
     res.render("members", hbsObject);
   });
 });
+
+module.exports = router;
