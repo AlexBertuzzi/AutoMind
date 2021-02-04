@@ -2,12 +2,12 @@
 const express = require("express");
 const session = require("express-session");
 
-// Requiring passport as we've configured it
-const passport = require("./config/passport");
-
 // Setting up Express App
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+// Requiring passport as we've configured it
+const passport = require("./config/passport");
 
 // Requiring models for syncing ****
 const db = require("./models");
@@ -32,6 +32,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(routes);
+
 // Syncing sequelize models and then starting the Express app ==========
 db.sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
