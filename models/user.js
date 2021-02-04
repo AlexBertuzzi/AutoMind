@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 module.exports = function(sequelize, DataTypes) {
-  const SalesPerson = sequelize.define("SalesPerson", {
+  const User = sequelize.define("User", {
     name: {
       type: DataTypes.STRING,
       allowNull: false
@@ -18,18 +18,18 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   });
-  SalesPerson.prototype.validPassword = function(password) {
+  User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
   };
-  SalesPerson.addHook("beforeCreate", salesPerson => {
-    salesPerson.password = bcrypt.hashSync(
-      salesPerson.password,
+  User.addHook("beforeCreate", user => {
+    user.password = bcrypt.hashSync(
+      user.password,
       bcrypt.genSaltSync(10),
       null
     );
   });
-  SalesPerson.associate = function(models) {
-    SalesPerson.hasMany(models.Client);
+  User.associate = function(models) {
+    User.hasMany(models.Client);
   };
-  return SalesPerson;
+  return User;
 };

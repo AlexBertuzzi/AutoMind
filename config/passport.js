@@ -12,25 +12,25 @@ passport.use(
     },
     (email, password, done) => {
       // When a user tries to sign in this code runs
-      db.SalesPerson.findOne({
+      db.User.findOne({
         where: {
           email: email
         }
-      }).then(dbSalesPerson => {
+      }).then(dbUser => {
         // If there's no SalesPerson with the given email
-        if (!dbSalesPerson) {
+        if (!dbUser) {
           return done(null, false, {
             message: "Incorrect email."
           });
         }
         // If there is a SalesPerson with the given email, but the password the user gives us is incorrect
-        else if (!dbSalesPerson.validPassword(password)) {
+        else if (!dbUser.validPassword(password)) {
           return done(null, false, {
             message: "Incorrect password."
           });
         }
         // If none of the above, return the dbSalesPerson
-        return done(null, dbSalesPerson);
+        return done(null, dbUser);
       });
     }
   )
@@ -39,8 +39,8 @@ passport.use(
 // In order to help keep authentication state across HTTP requests,
 // Sequelize needs to serialize and deserialize the user
 // Just consider this part boilerplate needed to make it all work
-passport.serializeUser((salesPerson, cb) => {
-  cb(null, salesPerson);
+passport.serializeUser((user, cb) => {
+  cb(null, user);
 });
 
 passport.deserializeUser((obj, cb) => {
