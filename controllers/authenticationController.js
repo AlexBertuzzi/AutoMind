@@ -9,29 +9,23 @@ const db = require("../models");
 const passport = require("../config/passport");
 
 router.get("/", (req, res) => {
-  db.SalesPerson.findAll().then(salesPerson => {
-    const hbsObject = {
-      salesPerson: salesPerson
-    };
-    console.log(hbsObject);
-    res.render("signup", hbsObject);
-  });
+  if (req.user) {
+    res.redirect("/members");
+  }
+  res.render("signup");
 });
 
 router.get("/login", (req, res) => {
-  db.SalesPerson.findAll().then(salesPerson => {
-    const hbsObject = {
-      salesPerson: salesPerson
-    };
-    console.log(hbsObject);
-    res.render("login", hbsObject);
-  });
+  if (req.user) {
+    res.redirect("/members");
+  }
+  res.render("login");
 });
 
 router.get("/members", isAuthenticated, (req, res) => {
-  db.SalesPerson.findAll().then(salesPerson => {
+  db.User.findAll().then(users => {
     const hbsObject = {
-      clients: salesPerson
+      users: users
     };
     console.log(hbsObject);
     res.render("members", hbsObject);
@@ -39,11 +33,11 @@ router.get("/members", isAuthenticated, (req, res) => {
 });
 
 router.post("/api/login", passport.authenticate("local"), (req, res) => {
-  res.json(req.salesPerson);
+  res.json(req.user);
 });
 
 router.post("/api/signup", (req, res) => {
-  db.SalesPerson.create({
+  db.User.create({
     name: req.body.name,
     email: req.body.email,
     password: req.body.password
@@ -62,12 +56,13 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/api/user_data", (req, res) => {
-  if (!req.salesPerson) {
+  if (!req.user) {
     res.json({});
   } else {
     res.json({
-      email: req.salesPerson.email,
-      id: req.salesPerson.id
+      name: req.user.name,
+      email: req.user.email,
+      id: req.user.id
     });
   }
 });
@@ -80,7 +75,7 @@ router.post("/api/client", (req, res) => {
     model: req.body.model,
     color: req.body.color,
     quote: req.body.quote,
-    timeStamp: req.body.timeStamp
+    followUp: req.body.followUp
   })
     .then(() => {
       res.redirect(307, "/api/client");
@@ -110,7 +105,7 @@ router.put("api/client", (req, res) => {
     model: req.body.model,
     color: req.body.color,
     quote: req.body.quote,
-    timeStamp: req.body.timeStamp
+    followUp: req.body.followUp
   })
     .then(() => {
       res.redirect(307, "/api/client");

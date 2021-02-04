@@ -30,13 +30,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    timeStamp: {
+    followUp: {
       type: DataTypes.DATEONLY,
       allowNull: true
     }
   });
   Client.associate = function(models) {
-    Client.belongsTo(models.SalesPerson, {
+    Client.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
