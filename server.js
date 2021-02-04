@@ -33,11 +33,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// ROUTES ============================================================
-require("./routes/api-routes.js")(app);
-//require("./routes/html-routes.js")(app);
-//require("./routes/----")(app);
-
 // Syncing sequelize models and then starting the Express app ==========
 db.sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => {
