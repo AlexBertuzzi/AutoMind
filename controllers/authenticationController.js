@@ -31,7 +31,7 @@ router.get("/login", (req, res) => {
 router.get("/members", isAuthenticated, (req, res) => {
   db.SalesPerson.findAll().then(salesPerson => {
     const hbsObject = {
-      clients: salesPerson
+      salesPerson: salesPerson
     };
     console.log(hbsObject);
     res.render("members", hbsObject);
