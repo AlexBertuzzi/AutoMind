@@ -2,12 +2,12 @@
 const express = require("express");
 const session = require("express-session");
 
-// Requiring passport as we've configured it
-const passport = require("./config/passport");
-
 // Setting up Express App
 const app = express();
 const PORT = process.env.PORT || 8080;
+
+// Requiring passport as we've configured it
+const passport = require("./config/passport");
 
 // Requiring models for syncing ****
 const db = require("./models");
@@ -25,13 +25,13 @@ app.set("view engine", "handlebars");
 
 const routes = require("./controllers/authenticationController");
 
-app.use(routes);
 // We need to use sessions to keep track of our user's login status
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(routes);
 
 // Syncing sequelize models and then starting the Express app ==========
 db.sequelize.sync({ force: true }).then(() => {
