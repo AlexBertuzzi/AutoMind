@@ -1,5 +1,3 @@
-const db = require("../../../models");
-
 $(document).ready(() => {
   // Reflects the name of the sales person once they login and are in the /members page
   $.get("/api/user_data").then(data => {
@@ -9,12 +7,6 @@ $(document).ready(() => {
   $(".add-client").on("click", event => {
     console.log("Add Client Hit");
     event.preventDefault();
-
-    // db.User.findOne({
-    //   where: {
-    //     id: req.params.id
-    //   }
-    // });
     const newClient = {
       name: $("#name")
         .val()
@@ -38,6 +30,7 @@ $(document).ready(() => {
         .val()
         .trim()
     };
+    // const id = $(this).data("id");
     // Sending our POST request
     $.ajax("/api/client", {
       type: "POST",
