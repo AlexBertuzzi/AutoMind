@@ -1,9 +1,9 @@
 {
     "development": {
-        "username": "ci1iachx2n9zsw8y",
-        "password": "j04f4ocagr8alq0t!",
-        "database": "xgoi0kljs4gweqm2",
-        "host": "phtfaw4p6a970uc0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        "username": "root",
+        "password": "",
+        "database": "automind_db",
+        "host": "127.0.0.1",
         "dialect": "mysql"
     },
     "test": {
