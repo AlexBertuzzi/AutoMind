@@ -19,6 +19,10 @@
       <div class="col">
         <h3>View Clients</h3>
         <ul>
+          <ol class="client-display">
+          </ol>
+        </ul>
+        <ul>
           {{#each clients}}
             <li>
               <p><span class="label">Name:</span> {{this.name}}</p>
@@ -84,7 +88,7 @@
               <input type="text" id="followUp" name="followUp">
             </div>
           </div>
-          <button type="submit">Add Client</button>
+          <button class="add-client" type="submit">Add Client</button>
         </div>
       </form>
   </div>
