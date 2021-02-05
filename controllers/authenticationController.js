@@ -8,6 +8,7 @@ const db = require("../models");
 
 const passport = require("../config/passport");
 
+// Passport Authentication Routes ============================================
 router.get("/", (req, res) => {
   if (req.user) {
     res.redirect("/members");
