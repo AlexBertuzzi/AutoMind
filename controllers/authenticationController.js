@@ -1,3 +1,4 @@
+// Dependencies ==============================================================
 const express = require("express");
 
 const router = express.Router();
@@ -8,7 +9,10 @@ const db = require("../models");
 
 const passport = require("../config/passport");
 
+let userId;
+
 // Passport Authentication Routes ============================================
+// Get requests------------------------------
 router.get("/", (req, res) => {
   if (req.user) {
     res.redirect("/members");
@@ -25,14 +29,15 @@ router.get("/login", (req, res) => {
 
 router.get("/members", isAuthenticated, (req, res) => {
   db.User.findAll().then(users => {
+    userId = JSON.parse(JSON.stringify(users[0].id));
     const hbsObject = {
-      users: users
+      users: JSON.parse(JSON.stringify(users))
     };
-    console.log(hbsObject);
+    console.log(JSON.parse(JSON.stringify(hbsObject)));
     res.render("members", hbsObject);
   });
 });
-
+// Post Ruequests----------------------------
 router.post("/api/login", passport.authenticate("local"), (req, res) => {
   res.json(req.user);
 });
@@ -51,6 +56,8 @@ router.post("/api/signup", (req, res) => {
     });
 });
 
+// Geting/Posting/Updating Client information ===================================
+// Get requests------------------------------
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
@@ -68,8 +75,13 @@ router.get("/api/user_data", (req, res) => {
   }
 });
 
+// router.get("/api/client", (req, res) => {
+// });
+
+// Post Put Delete Ruequests------------------
 router.post("/api/client", (req, res) => {
   db.Client.create({
+    UserId: userId,
     name: req.body.name,
     phoneNumber: req.body.phoneNember,
     make: req.body.make,
