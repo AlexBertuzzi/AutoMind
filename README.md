@@ -58,6 +58,7 @@ If you need to stay organized with your clients or future prospects this app wil
 ![GitHub Logo](Assets/)
 
 ## Live Link (Heroku)
+### https://auto-mind.herokuapp.com/
 
 ## Repository Link
 ### https://github.com/jannverduzco/AutoMind
