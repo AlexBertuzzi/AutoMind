@@ -97,7 +97,7 @@ router.post("api/notes", (req, res) => {
     });
 });
 
-router.put("api/client", (req, res) => {
+router.put("api/client/update", (req, res) => {
   db.Client.update({
     name: req.body.name,
     phoneNumber: req.body.phoneNumber,
@@ -108,7 +108,7 @@ router.put("api/client", (req, res) => {
     followUp: req.body.followUp
   })
     .then(() => {
-      res.redirect(307, "/api/client");
+      res.redirect(307, "/api/client/update");
     })
     .catch(err => {
       res.status(401).json(err);
