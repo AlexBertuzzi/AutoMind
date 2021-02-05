@@ -4,7 +4,6 @@
   * [Description](#Description)
   * [User Story](#User-Story)
   * [Elevator Pitch](#Elevator-Pitch)
-  * []
   * [Contributors](#Contributors)
   * [Language/Technoligies Used](#Language/Technologies-Used)
   * [Mock-Up](#Mock-Up)    
