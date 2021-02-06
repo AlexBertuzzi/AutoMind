@@ -34,6 +34,20 @@ router.get("/members", isAuthenticated, (req, res) => {
     include: [db.Client]
   }).then(user => {
     res.render("members", user);
+    console.log(user);
+  });
+});
+
+router.get("/api/members", isAuthenticated, (req, res) => {
+  const currentUser = req.user;
+  db.User.findOne({
+    where: {
+      id: currentUser.id
+    },
+    include: [db.Client]
+  }).then(user => {
+    res.json(user);
+    console.log(user);
   });
 });
 // Post Ruequests----------------------------
