@@ -30,7 +30,6 @@ $(document).ready(() => {
         .val()
         .trim()
     };
-    // const id = $(this).data("id");
     // Sending our POST request
     $.ajax("/api/client", {
       type: "POST",
