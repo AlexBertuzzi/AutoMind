@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     phoneNumber: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: true,
       validate: {
         len: [9]
