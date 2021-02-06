@@ -2,6 +2,10 @@
 const express = require("express");
 const session = require("express-session");
 
+// requering moment (for date formating )
+const moment = require("moment");
+moment().format();
+
 // Setting up Express App
 const app = express();
 const PORT = process.env.PORT || 8080;
