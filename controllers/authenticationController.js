@@ -9,8 +9,6 @@ const db = require("../models");
 
 const passport = require("../config/passport");
 
-let userId;
-
 // Passport Authentication Routes ============================================
 // Get requests------------------------------
 router.get("/", (req, res) => {
@@ -28,13 +26,14 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/members", isAuthenticated, (req, res) => {
-  db.User.findAll().then(users => {
-    userId = JSON.parse(JSON.stringify(users[0].id));
-    const hbsObject = {
-      users: JSON.parse(JSON.stringify(users))
-    };
-    console.log(JSON.parse(JSON.stringify(hbsObject)));
-    res.render("members", hbsObject);
+  const currentUser = req.user;
+  db.User.findOne({
+    where: {
+      id: currentUser.id
+    },
+    include: [db.Client]
+  }).then(user => {
+    res.render("members", user);
   });
 });
 // Post Ruequests----------------------------
@@ -75,13 +74,10 @@ router.get("/api/user_data", (req, res) => {
   }
 });
 
-// router.get("/api/client", (req, res) => {
-// });
-
 // Post Put Delete Ruequests------------------
 router.post("/api/client", (req, res) => {
   db.Client.create({
-    UserId: userId,
+    UserId: req.user.id,
     name: req.body.name,
     phoneNumber: req.body.phoneNember,
     make: req.body.make,
@@ -90,16 +86,7 @@ router.post("/api/client", (req, res) => {
     quote: req.body.quote,
     followUp: req.body.followUp
   })
-    .then(() => {
-      db.Client.findAll().then(clients => {
-        clientId = JSON.parse(JSON.stringify(clients[0].id));
-        const hbsObject = {
-          clients: JSON.parse(JSON.stringify(clients))
-        };
-        console.log(JSON.parse(JSON.stringify(hbsObject)));
-        res.render("members", hbsObject);
-      });
-    })
+    .then(req.user, res.redirect("/members"))
     .catch(err => {
       res.status(401).json(err);
     });

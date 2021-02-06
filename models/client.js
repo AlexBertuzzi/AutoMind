@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     followUp: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.STRING,
       allowNull: true
     }
   });
