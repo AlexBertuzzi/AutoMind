@@ -1,0 +1,61 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin-right: 0; 
+    margin-left: 0;
+    margin-bottom: 75px;
+    background-image: radial-gradient(#e7e7e7 2px, transparent 2px);
+    background-size: calc(10 * 1px) calc(10 * 1px);
+}
+.navbar-header {
+    width: 100%;
+}
+.navbar-brand {
+    float:right;
+    padding: 15px;
+    line-height: 10px;
+    height: 45px;
+    border: solid;
+    border-width: 2px;
+    border-color: #828282;
+    border-radius: 10px;
+}
+.container {
+    background-color: #f8f8f8;
+    margin-top: 2%;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding-left: 30px;
+    padding-right: 15px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #e7e7e7;
+    border-radius: 10px;
+}
+.container-intro {
+    background-color: #f8f8f8;
+    margin-top: 2%;
+    margin-right: 5%;
+    margin-left: 5%;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #e7e7e7;
+    border-radius: 10px;;
+}
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 75px;
+    width: 100%;
+}
+.special-text{
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+}

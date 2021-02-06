@@ -91,7 +91,14 @@ router.post("/api/client", (req, res) => {
     followUp: req.body.followUp
   })
     .then(() => {
-      res.redirect(307, "/api/client");
+      db.Client.findAll().then(clients => {
+        clientId = JSON.parse(JSON.stringify(clients[0].id));
+        const hbsObject = {
+          clients: JSON.parse(JSON.stringify(clients))
+        };
+        console.log(JSON.parse(JSON.stringify(hbsObject)));
+        res.render("members", hbsObject);
+      });
     })
     .catch(err => {
       res.status(401).json(err);

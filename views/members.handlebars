@@ -1,15 +1,19 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
+      <h1>
+        AutoMind
+      </a>
       <a class="navbar-brand" href="/logout">
         Logout
       </a>
+      </h1>
     </div>
   </div>
 </nav>
-  <div class="container">
+  <div class="container-intro">
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-6">
         <h2>Welcome <span class="member-name"></span></h2>
       </div>
     </div>
@@ -29,9 +33,9 @@
               
               <p><span class="label">Follow Up on:</span> {{this.followUp}}</p>
 
-              <button data-id="{{this.id}}" class="viewClient">View</button>
+              <button data-id="{{this.id}}" class="viewClient btn btn-primary">View</button>
 
-              <button data-id="{{this.id}}" class="deleteClient">Delete</button>
+              <button data-id="{{this.id}}" class="deleteClient btn btn-danger">Delete</button>
             </li>
           {{/each}}
         </ul>
@@ -88,7 +92,7 @@
               <input type="text" id="followUp" name="followUp">
             </div>
           </div>
-          <button class="add-client" type="submit">Add Client</button>
+          <button class="add-client btn btn-primary" type="submit">Add Client</button>
         </div>
       </form>
   </div>

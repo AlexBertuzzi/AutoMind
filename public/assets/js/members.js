@@ -37,6 +37,7 @@ $(document).ready(() => {
       data: newClient
     }).then(() => {
       console.log("New Client Succesfully Added!");
+      location.reload();
     });
   });
 });
