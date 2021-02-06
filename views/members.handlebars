@@ -25,13 +25,20 @@
         <ul>
           {{#each Clients}}
             <li>
-              <p><span class="label">Name:</span> {{this.dataValues.name}}</p>
-              
-              <p><span class="label">Follow Up on:</span> {{this.dataValues.followUp}}</p>
-
-              <button data-id="{{this.id}}" class="viewClient btn btn-primary">View</button>
-
-              <button data-id="{{this.id}}" class="deleteClient btn btn-danger">Delete</button>
+              <div class="row">
+                <div class="col-sm-3">
+                   <span class="label">Name:</span> {{this.dataValues.name}} 
+                </div>  
+                <div class="col-sm-3">
+                  <span class="label">Follow Up on:</span> {{this.dataValues.followUp}}
+                </div>
+                <div class="col-sm-3">
+                  <button data-id="{{this.id}}" class="viewClient btn btn-primary">View</button>
+                </div>
+                <div class="col-sm-3">
+                  <button data-id="{{this.id}}" class="deleteClient btn btn-danger">Delete</button>
+                </div>
+              </div>
             </li>
           {{/each}}
           </ul>

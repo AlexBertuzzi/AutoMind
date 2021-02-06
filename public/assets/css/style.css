@@ -12,6 +12,13 @@ body {
 .navbar-header {
     width: 100%;
 }
+/* removig bullets from clients listed */
+ul {
+    list-style-type: none;
+}
+li {
+    padding: 2px;
+}
 .navbar-brand {
     float:right;
     padding: 15px;
