@@ -28,13 +28,19 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/members", isAuthenticated, (req, res) => {
-  db.User.findAll().then(users => {
-    userId = JSON.parse(JSON.stringify(users[0].id));
-    const hbsObject = {
-      users: JSON.parse(JSON.stringify(users))
-    };
-    console.log(JSON.parse(JSON.stringify(hbsObject)));
-    res.render("members", hbsObject);
+  const currentUser = req.user;
+  db.User.findOne({
+    where: {
+      id: currentUser.id
+    },
+    include: [db.Client]
+  }).then(user => {
+    console.log(user.dataValues);
+    res.render("members", User.dataValues.Client);
+    // userId = JSON.parse(JSON.stringify(users[0].id));
+    // const hbsObject = {
+    //   users: JSON.parse(JSON.stringify(users))
+    // };
   });
 });
 // Post Ruequests----------------------------
@@ -75,8 +81,20 @@ router.get("/api/user_data", (req, res) => {
   }
 });
 
-// router.get("/api/client", (req, res) => {
-// });
+router.get("/api/client", (req, res) => {
+  db.Client.findAll()
+    .then(clients => {
+      clientId = JSON.parse(JSON.stringify(clients[0].id));
+      const hbsObject = {
+        clients: JSON.parse(JSON.stringify(clients))
+      };
+      console.log(JSON.parse(JSON.stringify(hbsObject)));
+      res.render("members", hbsObject);
+    })
+    .catch(err => {
+      res.status(401).json(err);
+    });
+});
 
 // Post Put Delete Ruequests------------------
 router.post("/api/client", (req, res) => {
@@ -91,6 +109,7 @@ router.post("/api/client", (req, res) => {
     followUp: req.body.followUp
   })
     .then(() => {
+      console.log("This was HIT!!!!");
       db.Client.findAll().then(clients => {
         clientId = JSON.parse(JSON.stringify(clients[0].id));
         const hbsObject = {
