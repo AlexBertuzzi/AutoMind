@@ -70,7 +70,7 @@ router.get("/api/viewclient/:id", (req, res) => {
     include: [db.Notes]
   }).then(client => {
     res.render("members", client);
-    console.log(client);
+    console.log(curretnClient);
   });
 });
 router.get("/logout", (req, res) => {
