@@ -34,22 +34,10 @@ router.get("/members", isAuthenticated, (req, res) => {
     include: [db.Client]
   }).then(user => {
     res.render("members", user);
-    console.log(user);
+    // console.log(user);
   });
 });
 
-router.get("/api/members", isAuthenticated, (req, res) => {
-  const currentUser = req.user;
-  db.User.findOne({
-    where: {
-      id: currentUser.id
-    },
-    include: [db.Client]
-  }).then(user => {
-    res.json(user);
-    console.log(user);
-  });
-});
 // Post Ruequests----------------------------
 router.post("/api/login", passport.authenticate("local"), (req, res) => {
   res.json(req.user);
@@ -69,8 +57,22 @@ router.post("/api/signup", (req, res) => {
     });
 });
 
-// Geting/Posting/Updating Client information ===================================
+// Viewing/Posting/Updating Client information ===================================
 // Get requests------------------------------
+// This route is to view all the specific CLIENT page
+router.get("/api/viewclient/:id", (req, res) => {
+  const curretnClient = req.client;
+  // console.log(curretnClient);
+  db.Client.findOne({
+    where: {
+      id: curretnClient
+    },
+    include: [db.Notes]
+  }).then(client => {
+    res.render("members", client);
+    console.log(client);
+  });
+});
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
