@@ -59,20 +59,21 @@ router.post("/api/signup", (req, res) => {
 
 // Viewing/Posting/Updating Client information ===================================
 // Get requests------------------------------
-// This route is to view all the specific CLIENT page
+// This route is to view the specific CLIENT(clicked on) page
 router.get("/api/viewclient/:id", (req, res) => {
-  const curretnClient = req.client;
-  // console.log(curretnClient);
+  const condition = "id" + req.params.id;
+  // console.log(condition);
   db.Client.findOne({
     where: {
-      id: curretnClient
+      id: condition
     },
     include: [db.Notes]
   }).then(client => {
-    res.render("members", client);
-    console.log(curretnClient);
+    // res.render("client", client);
+    res.json(client);
   });
 });
+
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");

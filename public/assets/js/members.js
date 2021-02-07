@@ -43,9 +43,11 @@ $(document).ready(() => {
   // Updating Client ===========================================================================================
   $(".viewClient").on("click", event => {
     event.preventDefault();
-    const id = $(this).data("id");
-    const currentURL = window.location.origin;
+    // alert($(this).attr("id"));
     // console.log("View Client Hit");
-    $.get(currentURL + "/api/viewclient" + id, {}).then(console.log());
+    const id = $(this).data("id");
+    console.log(id);
+    const currentURL = window.location.origin;
+    $.get(currentURL + "/api/viewclient/" + id, {}).then(console.log());
   });
 });
