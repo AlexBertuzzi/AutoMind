@@ -1,9 +1,9 @@
 $(document).ready(() => {
-  // Reflects the name of the sales person once they login and are in the /members page
+  // Reflects the name of the sales person once they login and are in the /members page ===================
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.name);
   });
-  //Adding Client
+  //Adding Client =========================================================================================
   $(".add-client").on("click", event => {
     console.log("Add Client Hit");
     event.preventDefault();
