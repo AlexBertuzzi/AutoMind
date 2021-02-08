@@ -21,37 +21,12 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <h3>View Clients</h3>
-        <ul>
-          {{#each Clients}}
-            <li>
-              <div class="row">
-                <div class="col-sm-3">
-                   <span class="label">Name:</span> {{this.dataValues.name}} 
-                </div>  
-                <div class="col-sm-3">
-                  <span class="label">Follow Up on:</span> {{this.dataValues.followUp}}
-                </div>
-                <div class="col-sm-3">
-                  <button data-id="{{this.id}}" class="viewClient btn btn-primary">View</button>
-                </div>
-                <div class="col-sm-3">
-                  <button data-id="{{this.id}}" class="deleteClient btn btn-danger">Delete</button>
-                </div>
-              </div>
-            </li>
-          {{/each}}
-          </ul>
+        <h3><a class="btn btn-primary" data-toggle="collapse" data-target="#createClient">
+            Create New Client
+        </a></h3>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h3>Create New Client</h3>
-      </div>
-    </div>
-      <form class="create-form">
+      <form class="create-form collapse" id="createClient">
         <div class="row">
           <div class="col-3 col-sm-3">
             <div class="form-group">
@@ -61,8 +36,14 @@
           </div>
           <div class="col-3 col-sm-3">
             <div class="form-group">
-              <label for="phone">Phone Number:</label>
-              <input type="text" id="phone" name="phone">
+              <label for="email">Email:</label>
+              <input type="text" id="email" name="email">
+            </div>
+          </div>
+          <div class="col-3 col-sm-3">
+            <div class="form-group">
+              <label for="phoneNumber">Phone Number:</label>
+              <input type="text"  id="phoneNumber" name="phoneNumber">
             </div>
           </div>
           <div class="col-3 col-sm-3">
@@ -91,11 +72,135 @@
           </div>
           <div class="col-3 col-sm-3">
             <div class="form-group">
-              <label for="followUp">Follow Up:</label>
-              <input type="text" id="followUp" name="followUp">
+              <label for="followUp">Follow Up:</label> 
+              <input type="date" id="followUp" name="followUp">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="note">Notes:</label> 
+              <textarea type="text" rows="5" cols="60"id="note" name="note"></textarea>
             </div>
           </div>
           <button class="add-client btn btn-primary" type="submit">Add Client</button>
         </div>
       </form>
   </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3>View Clients</h3>
+        <ul>
+          {{#each Clients}}
+            <li>
+              <h4>{{this.dataValues.name}} ID: {{this.dataValues.id}}</h4>
+              <div class="row lable" id="">
+                    <div class="col-3 col-sm-3">
+                      <p> Email: {{this.dataValues.email}}</p>
+                    </div>
+                    <div class="col-3 col-sm-3">
+                      <p> Phone Number: {{this.dataValues.phoneNumber}}</p>
+                    </div>
+                    <div class="col-3 col-sm-3">
+                      <p> Make: {{this.dataValues.make}}</p>
+                    </div>
+                    <div class="col-3 col-sm-3">
+                      <p> Model: {{this.dataValues.model}}</p>
+                    </div>
+                    <div class="col-3 col-sm-3">
+                      <p> Color: {{this.dataValues.color}}</p>
+                    </div>
+                    <div class="col-3 col-sm-3">
+                      <p> Quote: {{this.dataValues.quote}}</p>
+                    </div>
+                    <div class="col-3 col-sm-3">
+                      <p> Follow Up: {{this.dataValues.followUp}}</p>
+                    </div>
+              </div>
+                  <div class="row lable">
+                    <div class="col">
+                      <p> Notes: {{this.dataValues.note}}</p>
+                    </div>
+                  </div>
+                  <button data-id="{{this.dataValues.id}}" class="deleteClient btn btn-danger">Delete</button>
+            </li>
+          {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
+  
+                  <div class="container">
+                    <div class="row"> 
+                      <div class="col">
+                        <h3><a class="btn btn-primary" data-toggle="collapse" data-target="#updateClient">
+                          Update Client by ID
+                        </a></h3>
+                      </div>
+                    </div>
+                      <form class="update-form collapse" id="updateClient">
+                        <div class="row">
+                          <div class="col-3 col-sm-3">
+                            <div class="form-group">
+                              <label for="newname">Name:</label>
+                              <input type="text" id="newname" name="newname">
+                            </div>
+                          </div>
+                          <div class="col-3 col-sm-3">
+                            <div class="form-group">
+                              <label for="newemail">Email:</label>
+                              <input type="text" id="newemail" name="newemail">
+                            </div>
+                          </div>
+                          <div class="col-3 col-sm-3">
+                            <div class="form-group">
+                              <label for="newphone">Phone Number:</label>
+                              <input type="text" id="newphone" name="newphone">
+                            </div>
+                          </div>
+                          <div class="col-3 col-sm-3">
+                            <div class="form-group">
+                              <label for="newmake">Make:</label>
+                              <input type="text" id="newmake" name="newmake">
+                            </div>
+                          </div>
+                          <div class="col-3 col-sm-3">
+                            <div class="form-group">
+                              <label for="newmodel">Model:</label>
+                              <input type="text" id="newmodel" name="newmodel">
+                            </div>
+                          </div>
+                          <div class="col-3 col-sm-3">
+                            <div class="form-group">
+                              <label for="newcolor">Color:</label>
+                              <input type="text" id="newcolor" name="newcolor">
+                            </div>
+                          </div>
+                          <div class="col-3 col-sm-3">
+                            <div class="form-group">
+                              <label for="newquote">Quote:</label>
+                              <input type="text" id="newquote" name="newquote">
+                            </div>
+                          </div>
+                          <div class="col-3 col-sm-3">
+                            <div class="form-group">
+                              <label for="newfollowUp">Follow Up:</label>
+                              <input type="text" id="newfollowUp" name="newfollowUp">
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group">
+                              <label for="newnote">Notes:</label> 
+                                <textarea type="text" rows="5" cols="60"id="newnote" name="newnote"></textarea>
+                            </div>
+                          </div>
+                          <div class="col-3 col-sm-3">
+                            <div class="form-group">
+                              <label for="id">ID:</label>
+                              <input type="text" id="id" name="id">
+                            </div>
+                          </div>
+                          <button class="updateClient btn btn-primary">Update</button>
+                        </div> 
+                  </div>             
+  

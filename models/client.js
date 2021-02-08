@@ -7,12 +7,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [2]
       }
     },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     phoneNumber: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [9]
-      }
+      allowNull: true
     },
     make: {
       type: DataTypes.STRING,
@@ -33,6 +34,10 @@ module.exports = function(sequelize, DataTypes) {
     followUp: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    note: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
   });
   Client.associate = function(models) {
@@ -40,9 +45,6 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: {
         allowNull: false
       }
-    });
-    Client.hasMany(models.Notes, {
-      onDelete: "cascade"
     });
   };
   return Client;
