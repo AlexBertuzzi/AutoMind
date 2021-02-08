@@ -53,6 +53,32 @@ li {
     border-color: #e7e7e7;
     border-radius: 10px;;
 }
+.lable {
+    padding: 10px;
+    padding-bottom: 0;
+    margin-top: 1%;
+    margin-left: 5px;
+    margin-right: 10px;
+    line-height: 20px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #e7e7e7;
+    border-radius: 10px;;
+}
+ul {
+    padding: 0;
+}
+.deleteClient {
+    float:right;
+    margin: 5px;
+}
+.updateBtn {
+    float:right;
+    margin: 5px;
+}
+.add-client {
+    margin-bottom: 5px;
+}
 footer {
     position: absolute;
     left: 0;
