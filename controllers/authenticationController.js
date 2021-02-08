@@ -56,8 +56,23 @@ router.post("/api/signup", (req, res) => {
     });
 });
 
-// Geting/Posting/Updating Client information ===================================
+// Viewing/Posting/Updating Client information ===================================
 // Get requests------------------------------
+// This route is to view the specific CLIENT(clicked on) page
+router.get("/api/viewclient/:id", (req, res) => {
+  const condition = "id" + req.params.id;
+  // console.log(condition);
+  db.Client.findOne({
+    where: {
+      id: condition
+    },
+    include: [db.Notes]
+  }).then(client => {
+    // res.render("client", client);
+    res.json(client);
+  });
+});
+
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
