@@ -56,41 +56,12 @@ router.post("/api/signup", (req, res) => {
     });
 });
 
-// Viewing/Posting/Updating Client information ===================================
+// Geting/Posting/Updating Client information ===================================
 // Get requests------------------------------
-// This route is to view the specific CLIENT(clicked on) page
-router.get("/api/viewclient/:id", (req, res) => {
-  const condition = "id" + req.params.id;
-  // console.log(condition);
-  db.Client.findOne({
-    where: {
-      id: condition
-    },
-    include: [db.Notes]
-  }).then(client => {
-    // res.render("client", client);
-    res.json(client);
-  });
-});
-
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
-
-// router.get("/client_data/:id", (req, res) => {
-//   const currentClient = req.params.id;
-//   db.Client.findOne({
-//     where: {
-//       id: currentClient
-//     },
-//     include: [db.Notes]
-//   }).then(client => {
-//     res.render("client", client);
-//     console.log(currentClient);
-//     console.log("you got this far");
-//   });
-// });
 
 router.get("/api/user_data", (req, res) => {
   if (!req.user) {
@@ -124,20 +95,9 @@ router.post("/api/client", (req, res) => {
     });
 });
 
-// router.post("api/notes", (req, res) => {
-//   db.Notes.create({
-//     ClientId: req.clients.id,
-//     note: req.body.note
-//   })
-//     .then(() => {
-//       res.redirect(307, "/client");
-//     })
-//     .catch(err => {
-//       res.status(401).json(err);
-//     });
-// });
-
-router.put("api/client/update", (req, res) => {
+router.put("api/client", (req, res) => {
+  //const condition = "id = " + req.params.id;
+  //console.log(condition);
   db.Client.update({
     name: req.body.name,
     email: req.body.email,
@@ -147,10 +107,15 @@ router.put("api/client/update", (req, res) => {
     color: req.body.color,
     quote: req.body.quote,
     followUp: req.body.followUp,
-    note: req.body.note
+    note: req.body.note,
+
+    where: {
+      id: req.body.id
+    }
   })
     .then(() => {
-      res.redirect(307, "/members");
+      res.json(dbClient);
+      //res.redirect(307, "/members");
     })
     .catch(err => {
       res.status(401).json(err);
@@ -158,11 +123,15 @@ router.put("api/client/update", (req, res) => {
 });
 
 router.delete("/api/client/:id", (req, res) => {
-  const condition = "id = " + req.client.id;
-
-  db.Client.destroy({ condition, truncate: true });
-  console.log("client destroyed");
-  res.status(200).end();
+  console.log(req.params.id);
+  db.Client.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(() => {
+    console.log("client destroyed");
+    res.status(200).end();
+  });
 });
 
 module.exports = router;
