@@ -95,27 +95,24 @@ router.post("/api/client", (req, res) => {
     });
 });
 
-router.put("api/client", (req, res) => {
-  //const condition = "id = " + req.params.id;
-  //console.log(condition);
-  db.Client.update({
-    name: req.body.name,
-    email: req.body.email,
-    phoneNumber: req.body.phoneNumber,
-    make: req.body.make,
-    model: req.body.model,
-    color: req.body.color,
-    quote: req.body.quote,
-    followUp: req.body.followUp,
-    note: req.body.note,
+router.get("/api/client/:id", (req, res) => {
+  db.Client.findOne({
+    where: {
+      id: req.params.id
+    }
+  }).then(dbClient => {
+    res.json(dbClient);
+  });
+});
 
+router.put("/api/client", (req, res) => {
+  db.Client.update(req.body, {
     where: {
       id: req.body.id
     }
   })
-    .then(() => {
+    .then(dbClient => {
       res.json(dbClient);
-      //res.redirect(307, "/members");
     })
     .catch(err => {
       res.status(401).json(err);
