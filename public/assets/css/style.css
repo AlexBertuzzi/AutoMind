@@ -76,6 +76,13 @@ ul {
     float:right;
     margin: 5px;
 }
+.id {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+#marginFix {
+    margin-top: 10px;
+}
 .add-client {
     margin-bottom: 5px;
 }
