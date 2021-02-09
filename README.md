@@ -26,9 +26,9 @@ SO THAT when I follow up with a client, I have an organized history of notes and
 If you need to stay organized with your clients or future prospects this app will allow you to keep track of notes and personal client information with proper authentication, it will also help keep organized by allowing to set follow ups with clients. 
 ```
 ## Contributors
-* Alex Bertuzzi - alexmichaelbertuzzi@yahoo.com
-* Janneth Alvarado Verduzco - janneth_verduzco@live.com
-* Moussa Nait Merabet -
+* [Alex Bertuzzi](https://github.com/AlexBertuzzi) - alexmichaelbertuzzi@yahoo.com
+* [Janneth Alvarado Verduzco](https://github.com/jannverduzco) - janneth_verduzco@live.com
+* [Moussa Nait Merabet](https://github.com/Mnm1506) - moussanm2014@gmail.com
 
 ## Language/Technologies Used
 * HTML
@@ -37,24 +37,35 @@ If you need to stay organized with your clients or future prospects this app wil
 * jQuery
 * NPM package(Package.json)
    * Express
-   * MySQL
+   * mySql
    * Express-Handlebars
    * Passport
+   * bcrypt
+   * fs(file system)
+   * Sequelize
+   * Path
+
 * Bootstarp (CSS framework)
+* Basnal-io
+(CSS Pattern library)
+
 * Heroku (Deployment)
 * Travis CI (Testing)
 * ESLint (Testing code)
 
 ## Mock-Up 
 
-### AutoMind (WebPage-Layout)
-![GitHub Logo](Assets/)
+### AutoMind (Website-SignUp)
+![GitHub Logo](public/assets/img/sign-up-layout.jpg)
 
-### 
-![GitHub Logo](Assets/)
+### Dashboard Display
+![GitHub Logo](public/assets/img/dashboard.jpg)
 
-### 
-![GitHub Logo](Assets/)
+### Added Clients View
+![GitHub Logo](public/assets/img/clients-display.jpg)
+
+### Updating Client Information
+![GitHub Logo](public/assets/img/updating-client.jpg)
 
 ## Live Link (Heroku)
 ### https://auto-mind.herokuapp.com/
