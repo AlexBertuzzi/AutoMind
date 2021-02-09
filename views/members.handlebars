@@ -132,13 +132,21 @@
   
                   <div class="container">
                     <div class="row"> 
-                      <div class="col">
-                        <h3><a class="btn btn-primary" data-toggle="collapse" data-target="#updateClient">
+                      <div class="col-3 col-sm-3">
+                        <div class="form-group id">
+                          <h4>
+                            <label for="id">Enter Client ID Here:</label>
+                            <input type="text" id="id" name="id" size="4">
+                          </h4>
+                        </div>
+                      </div>
+                      <div class="col-3 col-sm-3">
+                        <h3 id="marginFix"><a class="btn btn-primary grabId" data-toggle="collapse" data-target="#cms">
                           Update Client by ID
                         </a></h3>
                       </div>
                     </div>
-                      <form class="update-form collapse" id="updateClient">
+                      <form class="update-form collapse" id="cms">
                         <div class="row">
                           <div class="col-3 col-sm-3">
                             <div class="form-group">
@@ -194,13 +202,8 @@
                                 <textarea type="text" rows="5" cols="60"id="newnote" name="newnote"></textarea>
                             </div>
                           </div>
-                          <div class="col-3 col-sm-3">
-                            <div class="form-group">
-                              <label for="id">ID:</label>
-                              <input type="text" id="id" name="id">
-                            </div>
-                          </div>
-                          <button class="updateClient btn btn-primary" type="submit">Update</button>
+                          <button class="updateClient btn btn-primary submit" type="submit">Update</button>
                         </div> 
+                      </form>
                   </div>             
   

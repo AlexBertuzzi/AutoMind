@@ -58,8 +58,27 @@ $(document).ready(() => {
     });
   });
 
+  $(".grabId").on("click", () => {
+    const id = $("#id")
+      .val()
+      .trim();
+    $.get("/api/client/" + id, data => {
+      console.log(data);
+      if (data) {
+        $("#newname").val(data.name);
+        $("#newemail").val(data.email);
+        $("#newphone").val(data.phoneNumber);
+        $("#newmake").val(data.make);
+        $("#newmodel").val(data.model);
+        $("#newcolor").val(data.color);
+        $("#newquote").val(data.quote);
+        $("#newfollowUp").val(data.followUp);
+        $("#newnote").val(data.note);
+      }
+    });
+  });
   //Make updates to client
-  $(".updateClient").on("click", event => {
+  $("#cms").on("submit", event => {
     event.preventDefault();
     const id = $("#id")
       .val()
@@ -106,14 +125,11 @@ $(document).ready(() => {
     };
 
     // Send the PUT request.
-    $.ajax(
-      "/api/client",
-      {
-        type: "PUT",
-        data: updateClient
-      },
-      console.log(updateClient)
-    ).then(() => {
+    $.ajax({
+      method: "PUT",
+      url: "/api/client",
+      data: updateClient
+    }).then(() => {
       console.log("Updated Client");
       // Reload the page to get the updated list
       location.reload();
