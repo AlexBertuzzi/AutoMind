@@ -69,6 +69,12 @@ If you need to stay organized with your clients or future prospects this app wil
 
 ## Live Link (Heroku)
 ### https://auto-mind.herokuapp.com/
+Enter following credentials to view deployed site with data
+email: bob_vance@yahoo.com
+password: Password12
+Or create your own account
+
+https://auto-mind.herokuapp.com/
 
 ## Repository Link
 ### https://github.com/jannverduzco/AutoMind
